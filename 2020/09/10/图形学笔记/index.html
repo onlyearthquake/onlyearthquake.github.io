@@ -36,10 +36,8 @@
 </li>
 <li><p>直立空间：从世界空间平移到对象坐标</p>
 </li>
-<li><p>移动：先平移还是先旋转（旋转应沿着原点旋转，沿非原点的点旋转的实质仍为平移和沿原点旋转）</p>
-</li>
-<li><p>基矢量、正交向量、标准正交基矢量</p>
-</li>
+<li>移动：先平移还是先旋转（旋转应沿着原点旋转，沿非原点的点旋转的实质仍为平移和沿原点旋转）</li>
+<li>基矢量、正交向量、标准正交基矢量</li>
 </ul>
 <p>矩阵：<br>坐标空间的变换：</p>
 <ul>
@@ -47,20 +45,85 @@
 <li>可执行旋转和缩放（行向量可解释为坐标空间的基矢量，属于线性变换 ）</li>
 </ul>
 <h1 id="矩阵和线性变换"><a href="#矩阵和线性变换" class="headerlink" title="矩阵和线性变换"></a><strong>矩阵和线性变换</strong></h1><h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a><strong>旋转</strong></h2><p>围绕主轴的旋转：x轴：</p>
-<p>$$<br>\begin{matrix}<br>1 &amp; 0 &amp; 0 \<br>0 &amp; cos\theta &amp; sin\theta \<br>0 &amp; -sin\theta &amp; cos\theta \<br>\end{matrix}<br>$$<br>y轴</p>
-<p>$$<br>\begin{matrix}<br>cos\theta &amp; 0 &amp; -sin\theta \<br>0 &amp; 1 &amp; 0 \<br>sin\theta &amp; 0 &amp; cos\theta \<br>\end{matrix}<br>$$</p>
-<p>z轴<br>$$<br>\begin{matrix}<br>cos\theta &amp; sin\theta &amp; 0 \<br>-sin\theta &amp; cos\theta &amp; 0 \<br>0 &amp; 0 &amp; 1 \<br>\end{matrix}<br>$$<br>均来自于2D轴相对旋转</p>
-<p>绕任意轴旋转：将向量分为平行于轴线$V_{||}$和垂直于轴线$V_\bot$的两部分，旋转后$V_{||}$不变，$V_\bot$绕轴线旋转，做$V_{||}$×V，取得辅助轴<strong>w</strong>,在二维平面中旋转$V_\bot$，为cos$$\theta$$$V_\bot$+sin$$\theta$$ <strong>w</strong>,相加即可<br>$$<br>\begin{matrix}<br>n_x^2(1-cos\theta)+ cos\theta &amp;<br>n_xn_y(1 - cos\theta) +n_zsin\theta<br>&amp;n_xn_z(1-cos\theta)-n_ysin\theta \<br>n_xn_y(1 - cos\theta) -n_zsin\theta<br>&amp; n_y^2(1-cos\theta)+ cos\theta<br>&amp;n_yn_z(1 - cos\theta) +n_xsin\theta \<br>n_xn_z(1 - cos\theta) +n_ysin\theta<br>&amp; n_yn_z(1 - cos\theta) -n_xsin\theta<br>&amp; n_z^2(1-cos\theta)+ cos\theta  \<br>\end{matrix}<br>$$</p>
-<h2 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a><strong>缩放</strong></h2><p>沿坐标轴的缩放：</p>
-<p>$$<br>\begin{matrix}<br>k_x &amp;0&amp; 0\<br>0&amp;k_y&amp;0\<br>0&amp;0&amp;k_z\<br>\end{matrix}<br>$$<br>沿任意方向的缩放：同样分为平行于轴线$V_{||}$和垂直于轴线$V_\bot$的两部分，$V_\bot$不变，$V_{||}$按比例缩小，n是平行于轴线的单位向量<br>$$<br>\begin{matrix}n_x^2(k -1 )+ 1<br> &amp; n_xn_y(k -1)<br> &amp;n_xn_z(k -1)\<br> n_xn_y(k -1)<br> &amp; n_y^2(k -1)+ 1<br> &amp;n_yn_z(k -1)  \<br> n_xn_z(k -1)<br> &amp; n_yn_z(k -1)<br> &amp; n_z^2(k -1)+ 1  \<br> \end{matrix}<br>$$</p>
-<h2 id="投影与反射"><a href="#投影与反射" class="headerlink" title="投影与反射"></a><strong>投影与反射</strong></h2><p><strong>投影</strong></p>
-<p>主轴或者主平面上：xy面：<br>$$<br>\begin{matrix}<br>1 &amp;0&amp; 0\<br>0&amp;1&amp;0\<br>0&amp;0&amp;0\<br>\end{matrix}<br>$$</p>
-<p>投影到任意平面上：（等价于相对于法向量缩放，比例系数为0）<br>$$<br>\begin{matrix}<br>1 - n_x^2 &amp; -n_xn_y  &amp; -n_xn_z\<br>-n_xn_y &amp; 1 -n_y^2&amp;-n_yn_z  \<br>-n_xn_z  &amp; -n_yn_z  &amp; 1 -n_z^2 \<br>\end{matrix}<br>$$</p>
-<p><strong>镜像</strong>则是比例系数为-1的特殊情况<br>$$<br>\begin{matrix}1 - 2n_x^2 &amp; -2n_xn_y  &amp; -2n_xn_z\<br>-2n_xn_y &amp; 1 -2n_y^2&amp;-2n_yn_z  \<br>-2n_xn_z  &amp; -2n_yn_z  &amp; 1 -2n_z^2 \<br>\end{matrix}<br>$$<br><strong>错切</strong></p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 & 0 & 0 \\
+0 & cos\theta & sin\theta \\
+0 & -sin\theta & cos\theta \\
+\end{matrix}</script><p>y轴</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+cos\theta & 0 & -sin\theta \\
+0 & 1 & 0 \\
+sin\theta & 0 & cos\theta \\
+\end{matrix}</script><p>z轴</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+cos\theta & sin\theta & 0 \\
+-sin\theta & cos\theta & 0 \\
+0 & 0 & 1 \\
+\end{matrix}</script><p>均来自于2D轴相对旋转</p>
+<p>绕任意轴旋转：将向量分为平行于轴线$V<em>{||}$和垂直于轴线$V</em>\bot$的两部分，旋转后$V<em>{||}$不变，$V</em>\bot$绕轴线旋转，做$V<em>{||}$×V，取得辅助轴<strong>w</strong>,在二维平面中旋转$V</em>\bot$，为cos<script type="math/tex">\theta$$$V_\bot$+sin</script>\theta$$ <strong>w</strong>,相加即可</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+n_x^2(1-cos\theta)+ cos\theta & 
+n_xn_y(1 - cos\theta) +n_zsin\theta 
+&n_xn_z(1-cos\theta)-n_ysin\theta \\
+n_xn_y(1 - cos\theta) -n_zsin\theta
+& n_y^2(1-cos\theta)+ cos\theta 
+&n_yn_z(1 - cos\theta) +n_xsin\theta \\
+n_xn_z(1 - cos\theta) +n_ysin\theta
+& n_yn_z(1 - cos\theta) -n_xsin\theta
+& n_z^2(1-cos\theta)+ cos\theta  \\
+\end{matrix}</script><h2 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a><strong>缩放</strong></h2><p>沿坐标轴的缩放：</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+k_x &0& 0\\
+0&k_y&0\\
+0&0&k_z\\
+\end{matrix}</script><p>沿任意方向的缩放：同样分为平行于轴线$V<em>{||}$和垂直于轴线$V</em>\bot$的两部分，$V<em>\bot$不变，$V</em>{||}$按比例缩小，n是平行于轴线的单位向量</p>
+<script type="math/tex; mode=display">
+\begin{matrix}n_x^2(k -1 )+ 1
+ & n_xn_y(k -1) 
+ &n_xn_z(k -1)\\
+ n_xn_y(k -1)
+ & n_y^2(k -1)+ 1
+ &n_yn_z(k -1)  \\
+ n_xn_z(k -1) 
+ & n_yn_z(k -1) 
+ & n_z^2(k -1)+ 1  \\
+ \end{matrix}</script><h2 id="投影与反射"><a href="#投影与反射" class="headerlink" title="投影与反射"></a><strong>投影与反射</strong></h2><p><strong>投影</strong></p>
+<p>主轴或者主平面上：xy面：</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 &0& 0\\
+0&1&0\\
+0&0&0\\
+\end{matrix}</script><p>投影到任意平面上：（等价于相对于法向量缩放，比例系数为0）</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 - n_x^2 & -n_xn_y  & -n_xn_z\\
+-n_xn_y & 1 -n_y^2&-n_yn_z  \\ 
+-n_xn_z  & -n_yn_z  & 1 -n_z^2 \\
+\end{matrix}</script><p><strong>镜像</strong>则是比例系数为-1的特殊情况</p>
+<script type="math/tex; mode=display">
+\begin{matrix}1 - 2n_x^2 & -2n_xn_y  & -2n_xn_z\\
+-2n_xn_y & 1 -2n_y^2&-2n_yn_z  \\ 
+-2n_xn_z  & -2n_yn_z  & 1 -2n_z^2 \\
+\end{matrix}</script><p><strong>错切</strong></p>
 <p>不均匀地拉伸坐标空间，不保留角度</p>
-<p>如xy错切：<br>$$<br>\begin{matrix}1 &amp;0&amp; 0\<br>0&amp;1&amp;0\<br>s&amp;t&amp;1\<br>\end{matrix}<br>$$</p>
-<p>xz错切：<br>$$<br>\begin{matrix}<br>1 &amp;0&amp; 0\<br>s&amp;1&amp;t\<br>0&amp;0&amp;1\<br>\end{matrix}<br>$$</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>线性变换具有可组合性，可以直接通过乘积的方式组合不同的变换</p>
+<p>如xy错切：</p>
+<script type="math/tex; mode=display">
+\begin{matrix}1 &0& 0\\
+0&1&0\\
+s&t&1\\
+\end{matrix}</script><p>xz错切：</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 &0& 0\\
+s&1&t\\
+0&0&1\\
+\end{matrix}</script><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>线性变换具有可组合性，可以直接通过乘积的方式组合不同的变换</p>
 <p><strong>变换的分类</strong></p>
 <p>F(a)，映射</p>
 <ul>

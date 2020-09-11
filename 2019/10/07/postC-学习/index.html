@@ -27,12 +27,10 @@
 <p>常用：.NETCORE //.NET Framework //Unity</p>
 <h2 id="数据类型补充"><a href="#数据类型补充" class="headerlink" title="数据类型补充"></a>数据类型补充</h2><p>字面值“源代码中的固定值”如</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(<span class="number">42</span>);</span><br><span class="line">\\数字</span><br></pre></td></tr></table></figure>
-
 <p>有较高的精度需求可在数字后加M</p>
 <p>如数字很大，可加数字下划线（7.0适用</p>
 <p><strong>十六进制显示</strong></p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">"&#123;42:X&#125;"</span>)；</span><br></pre></td></tr></table></figure>
-
 <p><strong>round-trip</strong>强制满足变量类型</p>
 <ul>
 <li><strong>字符串</strong></li>
@@ -56,17 +54,13 @@
 <h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>封装数据的轻量级方案</p>
 <p>1.多个元素，一一赋值,声明可提前也可在元组中执行</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">string</span> conutry,<span class="keyword">int</span> population,<span class="keyword">double</span> area)=(China,<span class="number">14</span>,<span class="number">960.4</span>);</span><br></pre></td></tr></table></figure>
-
 <p> 2.变量均为var，放在括号外</p>
 <p>3.给元组赋顶名，可在括号后 ,或类似变量，用var声明</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">string</span><span class="number">.4</span> conutry,<span class="keyword">int</span> population,<span class="keyword">double</span> area)China=(China,<span class="number">14</span>,<span class="number">960</span>)</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> China=(<span class="keyword">string</span><span class="number">.4</span> conutry:China,<span class="keyword">int</span> population:<span class="number">14</span>,<span class="keyword">double</span> area:<span class="number">960</span>)</span><br></pre></td></tr></table></figure>
-
 <p>4.用_舍弃部分元</p>
 <p>5.类似结构的用法</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> China=(country,population,area);</span><br></pre></td></tr></table></figure>
-
 <p>（已为括号中的变量赋值过</p>
 <p><strong>ValueTuple</strong>中的命名只是方便查看，实际还是Item1…</p>
 <p>实际是值类型，支持(,,)的返回语法</p>
@@ -74,7 +68,6 @@
 <p><strong>赋值与实例化</strong>可在声明时赋值，或<code>name= new string[]={}</code>6.0后不必再次加入数据类型</p>
 <p>交错数组</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> [][] name=&#123; <span class="keyword">new</span> <span class="keyword">int</span>&#123;<span class="number">1</span>&#125; &amp;emsp;<span class="keyword">new</span> <span class="keyword">int</span>&#123;<span class="number">2</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
-
 <p><strong>使用</strong>1.Length</p>
 <p>2.方法<code>BinarySearch()</code> <code>Clear()</code> <code>Sort()</code> <code>Reverse()</code> <code>Resize()</code> </p>
 <p><strong>实例方法</strong><code>GetLength</code> <code>Clone</code> </p>
@@ -82,7 +75,6 @@
 <p><strong>加入</strong>List.add()&emsp;<strong>删去</strong>list.Remove()</p>
 <p><strong>使用</strong></p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Int32[]   values   =   (Int32[])List.ToArray(<span class="keyword">typeof</span>(Int32));</span><br></pre></td></tr></table></figure>
-
 <p><strong>构造器</strong><code>public list()</code>数值可不加，默认是16</p>
 <p><strong>方法</strong><code>Count()</code>长度 <code>Capacity()</code>最大数量&emsp;<code>ToArray</code> <code>Insert  TimeSize Contain</code>等数组方法</p>
 <h1 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a><strong>预编译</strong></h1><p>指令若干</p>
@@ -101,13 +93,12 @@
 <ol>
 <li>共同要求：与类的名称相同，无返回值，默认无参数</li>
 </ol>
-<ol start="2">
+<ol>
 <li>不同： 一般函数有默认构造，自己写会覆盖</li>
 </ol>
 <p>​      析构函数前有~（不构造，无析构</p>
 <h2 id="console"><a href="#console" class="headerlink" title="console"></a>console</h2><p>6.0支持加入,省去Console</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">static</span> System.Console;</span><br></pre></td></tr></table></figure>
-
 <p>输入</p>
 <ul>
 <li>.Write不换行</li>
@@ -137,7 +128,6 @@
 <p><strong>参数</strong>（类型或元组打包</p>
 <p>表达式主体方法</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">static string GetName(string first name,string last name)=&gt;$&quot;&#123;firstname&#125;&#123;lastname&#125;&quot;</span><br></pre></td></tr></table></figure>
-
 <h2 id="引用类型与值类型"><a href="#引用类型与值类型" class="headerlink" title="引用类型与值类型"></a>引用类型与值类型</h2><p>引用类型：别名，前改后必改&emsp;&emsp;值类型：复制，分配内存</p>
 <p>所有的类都是引用类型，包括接口</p>
 <p>二次引用会覆盖而不是代替</p>
@@ -152,7 +142,6 @@
 <h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><p>try&emsp;catch&emsp;throw&emsp;finally&emsp;</p>
 <p><strong>异常类型</strong></p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">FormatException()<span class="comment">//参数格式错误</span></span><br><span class="line"></span><br><span class="line">InvalidCast...()<span class="comment">//类型转换失败</span></span><br><span class="line"></span><br><span class="line">ArguementNull...()<span class="comment">//NULL参数</span></span><br><span class="line"></span><br><span class="line">NullReference...()<span class="comment">//类似，空引用</span></span><br><span class="line"></span><br><span class="line">NotImplemented...()<span class="comment">//方法实现失败</span></span><br><span class="line"></span><br><span class="line">IndexOutOfRange...()<span class="comment">//访问不存在的集合元素</span></span><br><span class="line"></span><br><span class="line">Arithmetic...()<span class="comment">//无效数学运算</span></span><br><span class="line"></span><br><span class="line">ArrayTpeMismatch...()<span class="comment">//储存错误的数组元素</span></span><br><span class="line"></span><br><span class="line">StackOver..()<span class="comment">//深递归</span></span><br><span class="line"></span><br><span class="line">Arguement...()<span class="comment">//参数错误</span></span><br><span class="line"></span><br><span class="line">...()<span class="comment">//基本异常</span></span><br></pre></td></tr></table></figure>
-
 <p>throw一般成对出现，try中抛出错误类型，cathch中返回调用栈</p>
 <h3 id="杂类"><a href="#杂类" class="headerlink" title="杂类"></a>杂类</h3><ul>
 <li>接口表示  ：</li>
@@ -184,7 +173,7 @@
 <p><strong>委托</strong>delegate(修饰符与变量名之间</p>
 <p>作用：将方法化为参数//以及缩短代码</p>
 <h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p><strong>声明</strong> 限制符 返回类型 委托名 事件名</p>
-<p><strong>监听</strong> On…()并处理空值 —–事件名称后加?可判断是否为空</p>
+<p><strong>监听</strong> On…()并处理空值 ——-事件名称后加?可判断是否为空</p>
 <p><strong>Handler</strong><br> 关联事件创建实例，通过+=关联方法，实现具体功能</p>
 <p>一般有两个参数sender（当前对象实例）和TevntArgs e(事件相关数据</p>
 <p>即为sender导致事件发生，事件的内容是e</p>
